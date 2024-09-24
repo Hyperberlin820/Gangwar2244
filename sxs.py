@@ -80,6 +80,17 @@ def record_command_logs(user_id, command, target=None, port=None, time=None):
     with open(LOG_FILE, "a") as file:
         file.write(log_entry + "\n")
 
+def get_remaining_approval_time(user_id):
+    expiry_date = user_approval_expiry.get(user_id)
+    if expiry_date:
+        remaining_time = expiry_date - datetime.datetime.now()
+        if remaining_time.days < 0:
+            return "Expired"
+        else:
+            return str(remaining_time)
+    else:
+        return "N/A"
+
 @bot.message_handler(commands=['add'])
 def add_user(message):
     user_id = str(message.chat.id)
