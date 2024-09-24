@@ -85,19 +85,36 @@ def add_user(message):
     user_id = str(message.chat.id)
     if user_id in admin_id:
         command = message.text.split()
-        if len(command) > 1:
+        if len(command) > 2:
             user_to_add = command[1]
+            duration_str = command[2]
+
+            try:
+                duration = int(duration_str[:-4])  # Extract the numeric part of the duration
+                if duration <= 0:
+                    raise ValueError
+                time_unit = duration_str[-4:].lower()  # Extract the time unit (e.g., 'hour', 'day', 'week', 'month')
+                if time_unit not in ('hour', 'hours', 'day', 'days', 'week', 'weeks', 'month', 'months'):
+                    raise ValueError
+            except ValueError:
+                response = "Thik se daal bsdk. Please provide a positive integer followed by 'hour(s)', 'day(s)', 'week(s)', or 'month(s)'."
+                bot.reply_to(message, response)
+                return
+
             if user_to_add not in allowed_user_ids:
                 allowed_user_ids.append(user_to_add)
                 with open(USER_FILE, "a") as file:
                     file.write(f"{user_to_add}\n")
-                response = f"User {user_to_add} Add HOGYA ."
+                if set_approval_expiry_date(user_to_add, duration, time_unit):
+                    response = f"User {user_to_add} added successfully for {duration} {time_unit}. Access will expire on {user_approval_expiry[user_to_add].strftime('%Y-%m-%d %H:%M:%S')} 👍."
+                else:
+                    response = "Failed to set approval expiry date. Please try again later."
             else:
-                response = "User Pehle SE hai ."
+                response = "User already exists 🤦‍♂️."
         else:
-            response = "Us BC KA ID DO."
+            response = "Please specify a user ID and the duration (e.g., 1hour, 2days, 3weeks, 4months) to add 😘."
     else:
-        response = "BhenChod Owner na HAI TU LODE."
+        response = "Mood ni hai abhi pelhe purchase kar isse:- @psycho2465."
 
     bot.reply_to(message, response)
 
@@ -121,13 +138,7 @@ def remove_user(message):
         else:
             response = ''' Usage: /remove <userid>'''
     else:
-        response = "BhenChod Owner na HAI TU LODE."
-
-    bot.reply_to(message, response)
-
-
-@bot.message_handler(commands=['clearlogs'])
-def clear_logs_command(message):
+        response =s_command(message):
     user_id = str(message.chat.id)
     if user_id in admin_id:
         try:
