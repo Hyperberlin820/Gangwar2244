@@ -80,6 +80,11 @@ def record_command_logs(user_id, command, target=None, port=None, time=None):
     with open(LOG_FILE, "a") as file:
         file.write(log_entry + "\n")
 
+import datetime
+
+# Dictionary to store the approval expiry date for each user
+user_approval_expiry = {}
+
 def get_remaining_approval_time(user_id):
     expiry_date = user_approval_expiry.get(user_id)
     if expiry_date:
