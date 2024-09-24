@@ -1,0 +1,37 @@
+UserID: 1721730214 | Time: 2024-09-23 06:34:05.998271 | Command: /attack | Target: 20.235.93.27 | Port: 16179 | Time: 598
+Username: @GyrangeYT
+Target: 20.235.93.27
+Port: 16179
+Time: 598
+
+UserID: 1721730214 | Time: 2024-09-23 06:34:52.954811 | Command: /attack | Target: 20.235.93.27 | Port: 16179 | Time: 598
+Username: @GyrangeYT
+Target: 20.235.93.27
+Port: 16179
+Time: 598
+
+UserID: 1721730214 | Time: 2024-09-23 06:36:10.901206 | Command: /attack | Target: 20.235.93.27 | Port: 16179 | Time: 598
+Username: @GyrangeYT
+Target: 20.235.93.27
+Port: 16179
+Time: 598
+
+UserID: 1721730214 | Time: 2024-09-23 07:59:41.513353 | Command: /attack | Target: 4.213.64.22 | Port: 17670 | Time: 346
+Username: @GyrangeYT
+Target: 4.213.64.22
+Port: 17670
+Time: 346
+
+UserID: 1721730214 | Time: 2024-09-23 08:15:17.334934 | Command: /attack | Target: 20.198.107.137 | Port: 17436 | Time: 598
+Username: @GyrangeYT
+Target: 20.198.107.137
+Port: 17436
+Time: 598
+
+UserID: 1721730214 | Time: 2024-09-23 08:39:01.520104 | Command: /attack | Target: 20.204.88.100 | Port: 25408 | Time: 243
+Username: @GyrangeYT
+Target: 20.204.88.100
+Port: 25408
+Time: 243
+
+UserID: 1721730214 | Time: 2024-09-23 08:43:54.921582 | Command: /attack | Target: 20.204.88.100 | Port: 25408 | Time: 243
