@@ -91,6 +91,22 @@ def get_remaining_approval_time(user_id):
     else:
         return "N/A"
 
+def set_approval_expiry_date(user_id, duration, time_unit):
+    current_time = datetime.datetime.now()
+    if time_unit == "hour" or time_unit == "hours":
+        expiry_date = current_time + datetime.timedelta(hours=duration)
+    elif time_unit == "day" or time_unit == "days":
+        expiry_date = current_time + datetime.timedelta(days=duration)
+    elif time_unit == "week" or time_unit == "weeks":
+        expiry_date = current_time + datetime.timedelta(weeks=duration)
+    elif time_unit == "month" or time_unit == "months":
+        expiry_date = current_time + datetime.timedelta(days=30 * duration)  # Approximation of a month
+    else:
+        return False
+    
+    user_approval_expiry[user_id] = expiry_date
+    return True
+
 @bot.message_handler(commands=['add'])
 def add_user(message):
     user_id = str(message.chat.id)
