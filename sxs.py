@@ -294,7 +294,7 @@ def handle_attack(message):
         else:
             response = "Usage :- /attack <target> <port> <time>"  # Updated command syntax
     else:
-        response = " ❌ Pehle BUY krke aa BHENCHOD - @GyrangeYT "
+        response = " ❌ Pehle BUY krke aa BHENCHOD - @gangwar2465 "
 
     bot.reply_to(message, response)
 
@@ -323,7 +323,7 @@ def handle_stop(message):
         else:
             response = "Usage :- /stop <target> <port> <time>"  # Updated command syntax
     else:
-        response = " ❌ Pehle BUY krke aa BHENCHOD - @GyrangeYT "
+        response = " ❌ Pehle BUY krke aa BHENCHOD - @gangwar2465 "
 
     bot.reply_to(message, response)
             
